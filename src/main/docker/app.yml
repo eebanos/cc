@@ -1,0 +1,14 @@
+version: '2'
+services:
+    cc-app:
+        image: cc
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - SPRING_DATASOURCE_URL=jdbc:mysql://cc-mysql:3306/cc?useUnicode=true&characterEncoding=utf8&useSSL=false
+            - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
+        ports:
+            - 8080:8080
+    cc-mysql:
+        extends:
+            file: mysql.yml
+            service: cc-mysql
